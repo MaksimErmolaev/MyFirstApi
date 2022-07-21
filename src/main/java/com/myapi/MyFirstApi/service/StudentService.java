@@ -1,28 +1,25 @@
 package com.myapi.MyFirstApi.service;
 
 import com.myapi.MyFirstApi.model.Student;
+import com.myapi.MyFirstApi.repository.StudentRepo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
+@Slf4j
 public class StudentService {
 
-    private static List<Student> peoples(){
-        List<Student> peoples = new ArrayList<Student>();
-        peoples.add(new Student("Иван","Иванов"));
-        peoples.add(new Student("Сергей","Сергеев"));
-        peoples.add(new Student("Илья","Ильин"));
-        return peoples;
-    }
-    private List<Student> students = peoples();
+    @Autowired
+    private StudentRepo studentRepo;
 
-   public List<Student> getAllStudents(){
-        return students;
+    public String listStudent() {
+        return "\n Полученные студенты : " + studentRepo.getAllStudents();
     }
-    public String addStudents(Student student){
-        students.add(student);
-        return "Студент добавлен " + student.getName() + " " + student.getSurname();
+
+    public String addStudents(Student student) {
+        studentRepo.saveStudent(student);
+        return "";
     }
+
 }
