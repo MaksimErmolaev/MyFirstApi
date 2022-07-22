@@ -1,7 +1,6 @@
 package com.myapi.MyFirstApi.controller;
 
 import com.myapi.MyFirstApi.model.Student;
-import com.myapi.MyFirstApi.repository.StudentRepo;
 import com.myapi.MyFirstApi.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
