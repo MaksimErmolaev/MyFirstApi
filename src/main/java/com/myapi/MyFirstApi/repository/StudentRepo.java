@@ -21,10 +21,10 @@ public class StudentRepo {
         return students;
     }
 
-    public String saveStudent(Student student) {
+    public Student saveStudent(Student student) {
         students.add(student);
         log.info(String.valueOf(students));
-        return String.format("Студент добавлен " + student);
+        return student;
     }
 
 }

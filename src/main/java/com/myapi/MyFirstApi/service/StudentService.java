@@ -14,12 +14,12 @@ public class StudentService {
     private StudentRepo studentRepo;
 
     public String listStudent() {
-        return "\n Полученные студенты : " + studentRepo.getAllStudents();
+        return "" + studentRepo.getAllStudents();
     }
 
-    public String addStudents(Student student) {
+    public Student addStudents(Student student) {
         studentRepo.saveStudent(student);
-        return "";
+        return student;
     }
 
 }
