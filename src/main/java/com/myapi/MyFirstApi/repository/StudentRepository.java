@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface StudentRepository extends CrudRepository<Student, Long> {
 
-    List<Student> findByName(@Param("name") String name);
+    List<Student> findByName(String name);
 
     @Override
     <S extends Student> S save(S entity);
