@@ -20,13 +20,21 @@ public class AccountController {
 
     @GetMapping("/all")
     public String listStudent(){
-        studentService.listStudent();
         return "Список всех студентов : " + studentService.listStudent();
+    }
+    @GetMapping("/one")
+    public Student getOneStudent(@RequestParam Long id){
+        return studentService.getOne(id);
+    }
+
+    @GetMapping("/findname")
+    public String getSameNames(@RequestParam String name) {
+        return "Список одинаковых студентов : " + studentService.findByName(name);
     }
 
     @PostMapping("/register")
     public String createStudents(@RequestBody Student student) {
         studentService.addStudents(student);
-        return "Студент успешно добавлен : " + student.getName() + " " + student.getSurname();
+        return "Студент успешно добавлен : " + student.getName() + " " + student.getSurname()+" "+student.getId();
     }
 }
