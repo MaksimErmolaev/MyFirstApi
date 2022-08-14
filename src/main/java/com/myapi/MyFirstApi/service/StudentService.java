@@ -16,20 +16,18 @@ public class StudentService {
     @Autowired
     private final StudentRepository studentRepository;
 
-
     public List<Student> listStudent() {
         return (List<Student>) studentRepository.findAll();
     }
 
-    public List<Student> findByName(String name){
-      return studentRepository.findByName(name);
+    public List<Student> findByName(String name) {
+        return studentRepository.findByName(name);
     }
 
     public Student getOne(Long id) {
         Student student = studentRepository.findById(id).get();
         return student;
     }
-
 
     public Student addStudents(Student student) {
         return studentRepository.save(student);

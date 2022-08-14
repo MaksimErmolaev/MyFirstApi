@@ -8,26 +8,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-
 @RestController
 @RequestMapping("/api/students")
 @Slf4j
 @RequiredArgsConstructor
-public class AccountController {
+public class StudentController {
 
     @Autowired
     private StudentService studentService;
 
+
     @GetMapping("/all")
-    public String listStudent(){
+    public String listStudent() {
         return "Список всех студентов : " + studentService.listStudent();
     }
+
     @GetMapping("/one")
-    public Student getOneStudent(@RequestParam Long id){
+    public Student getOneStudent(@RequestParam Long id) {
         return studentService.getOne(id);
     }
 
-    @GetMapping("/findname")
+    @GetMapping("/findName")
     public String getSameNames(@RequestParam String name) {
         return "Список одинаковых студентов : " + studentService.findByName(name);
     }
@@ -35,6 +36,6 @@ public class AccountController {
     @PostMapping("/register")
     public String createStudents(@RequestBody Student student) {
         studentService.addStudents(student);
-        return "Студент успешно добавлен : " + student.getName() + " " + student.getSurname()+" "+student.getId();
+        return "Студент успешно добавлен : " + student.getName() + " " + student.getSurName() + " " + student.getId();
     }
 }
